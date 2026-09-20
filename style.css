@@ -1,93 +1,575 @@
+/* ==============================
+   ESTILO GENERAL
+   ============================== */
 
-
-
-/* =========================================
-RESPONSIVE - CELULAR
-========================================= */
-
-@media (max-width: 900px) 
-{}
-.polaroid {
-    position: relative;
-    display: block;
-
-    width: 150px;
-
-    margin: 25px auto;
-
-    transform: rotate(-5deg);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.polaroid img {
-    width: 130px;
-    height: 160px;
+html {
+    scroll-behavior: smooth;
 }
 
-/* =========================================
-CELULARES PEQUEÑOS
-========================================= */
-
-@media (max-width: 500px) {}
-.inicio {
-    padding: 45px 15px 70px;
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #eaf7ff;
+    color: #31566a;
+    overflow-x: hidden;
 }
 
-.portada h1 {
-    font-size: 52px;
+
+/* ==============================
+   CORAZONES FLOTANDO
+   ============================== */
+
+.corazon {
+    position: fixed;
+    bottom: -50px;
+    color: #78c8e8;
+    font-size: 25px;
+    pointer-events: none;
+    z-index: 0;
+    animation: flotar 8s linear infinite;
+    opacity: 0.65;
 }
 
-.portada h2 {
-    font-size: 29px;
+.corazon:nth-child(1) {
+    left: 8%;
+    animation-delay: 0s;
+    font-size: 22px;
 }
 
-.mini-titulo {
-    font-size: 10px;
-    letter-spacing: 3px;
-}
-
-.subtitulo {
-    font-size: 13px;
-    line-height: 1.7;
-    margin: 22px 0;
-}
-
-.polaroid {
-    width: 125px;
-    padding: 7px 7px 12px;
-    margin: 12px auto;
-}
-
-.polaroid img {
-    width: 111px;
-    height: 135px;
-}
-
-.polaroid p {
-    font-size: 10px;
-    margin-top: 7px;
-}
-
-.titulo-seccion h2 {
+.corazon:nth-child(2) {
+    left: 20%;
+    animation-delay: 2s;
     font-size: 30px;
 }
 
-.carta-contenedor {
-    padding: 30px 20px;
+.corazon:nth-child(3) {
+    left: 35%;
+    animation-delay: 4s;
+    font-size: 18px;
 }
 
-.carta-contenedor p {
+.corazon:nth-child(4) {
+    left: 50%;
+    animation-delay: 1s;
+    font-size: 27px;
+}
+
+.corazon:nth-child(5) {
+    left: 67%;
+    animation-delay: 3s;
+    font-size: 20px;
+}
+
+.corazon:nth-child(6) {
+    left: 82%;
+    animation-delay: 5s;
+    font-size: 32px;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(15deg);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   PORTADA
+   ============================== */
+
+.inicio {
+    min-height: 100vh;
+    padding: 80px 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(120,200,232,0.2), transparent 30%),
+        #eaf7ff;
+}
+
+
+/* Nubes decorativas */
+
+.inicio::before {
+    content: "☁";
+    position: absolute;
+    top: 8%;
+    left: 7%;
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.8);
+    animation: nube 6s ease-in-out infinite;
+}
+
+.inicio::after {
+    content: "☁";
+    position: absolute;
+    right: 8%;
+    bottom: 12%;
+    font-size: 100px;
+    color: rgba(255, 255, 255, 0.7);
+    animation: nube 7s ease-in-out infinite reverse;
+}
+
+@keyframes nube {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(20px);
+    }
+}
+
+
+/* ==============================
+   PORTADA CENTRAL
+   ============================== */
+
+.portada {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.mini-titulo {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #4da9d0;
+    margin-bottom: 15px;
+}
+
+.corazon-grande {
+    font-size: 55px;
+    color: #68bddd;
+    margin-bottom: 10px;
+    animation: latido 1.8s ease-in-out infinite;
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.portada h1 {
+    font-size: 90px;
+    line-height: 0.95;
+    color: #2f91bb;
+    text-shadow: 2px 3px 0 white;
+    margin-bottom: 15px;
+}
+
+.portada h2 {
+    font-size: 45px;
+    color: #477b91;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.subtitulo {
+    font-size: 18px;
+    color: #62889a;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+
+/* ==============================
+   BOTÓN
+   ============================== */
+
+.boton {
+    display: inline-block;
+    padding: 13px 28px;
+    border-radius: 30px;
+    background: #78c8e8;
+    color: white;
+    text-decoration: none;
     font-size: 15px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(65, 150, 190, 0.25);
+}
+
+.boton:hover {
+    background: #4da9d0;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(65, 150, 190, 0.35);
+}
+
+
+/* ==============================
+   POLAROIDS
+   ============================== */
+
+.polaroid {
+    position: absolute;
+    width: 185px;
+    background: white;
+    padding: 10px 10px 18px;
+    border-radius: 2px;
+    box-shadow: 0 12px 30px rgba(60, 130, 160, 0.2);
+    text-align: center;
+    z-index: 3;
+}
+
+.polaroid img {
+    width: 165px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.polaroid p {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #477b91;
+    font-style: italic;
+}
+
+
+/* Polaroid izquierda */
+
+.izquierda {
+    left: 8%;
+    top: 23%;
+    transform: rotate(-8deg);
+    transition: 0.4s;
+}
+
+.izquierda:hover {
+    transform: rotate(-3deg) scale(1.05);
+}
+
+
+/* Polaroid derecha */
+
+.derecha {
+    right: 8%;
+    top: 25%;
+    transform: rotate(8deg);
+    transition: 0.4s;
+}
+
+.derecha:hover {
+    transform: rotate(3deg) scale(1.05);
+}
+
+
+/* ==============================
+   SECCIONES
+   ============================== */
+
+.seccion {
+    min-height: 100vh;
+    padding: 100px 8%;
+    position: relative;
+    background: #f4fbff;
+}
+
+.seccion:nth-child(even) {
+    background: #eaf7ff;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 45px;
+    color: #318db5;
+    margin-bottom: 50px;
+}
+
+.titulo-seccion::after {
+    content: "♡";
+    display: block;
+    font-size: 30px;
+    color: #78c8e8;
+    margin-top: 8px;
+}
+
+
+/* ==============================
+   CARTA
+   ============================== */
+
+.carta-contenedor {
+    max-width: 850px;
+    margin: auto;
+    padding: 60px;
+}
+
+.carta {
+    background: white;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(70, 140, 170, 0.15);
+    position: relative;
+    border: 1px solid #d4edf7;
+}
+
+.carta::before {
+    content: "♡";
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    font-size: 30px;
+    color: #78c8e8;
+}
+
+.carta::after {
+    content: "♡";
+    position: absolute;
+    bottom: 18px;
+    right: 25px;
+    font-size: 30px;
+    color: #78c8e8;
+}
+
+.carta p {
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    color: #456979;
+}
+
+
+/* ==============================
+   HISTORIA
+   ============================== */
+
+.historia {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.historia p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #4b7182;
+}
+
+
+/* ==============================
+   RECUERDOS
+   ============================== */
+
+.recuerdos-grid {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.recuerdo {
+    background: white;
+    padding: 30px 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(70, 140, 170, 0.15);
+    border: 1px solid #d8eef7;
+    transition: 0.3s;
+}
+
+.recuerdo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(70, 140, 170, 0.2);
+}
+
+.recuerdo h3 {
+    color: #3495bd;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.recuerdo p {
+    color: #5d7d8b;
+    line-height: 1.7;
+}
+
+.recuerdo::before {
+    content: "♡";
+    display: block;
+    color: #78c8e8;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+
+/* ==============================
+   PARTE FINAL
+   ============================== */
+
+.final {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,0.9), transparent 45%),
+        #dff3fc;
 }
 
 .final h2 {
-    font-size: 35px;
+    font-size: 50px;
+    color: #318db5;
+    margin-bottom: 20px;
 }
+
+.final p {
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #557786;
+}
+
+.final .corazon-grande {
+    margin-top: 25px;
+}
+
+
+/* ==============================
+   FOOTER
+   ============================== */
+
+footer {
+    padding: 25px;
+    text-align: center;
+    background: #c9eaf7;
+    color: #477b91;
+    font-size: 13px;
+}
+
+
+/* ==============================
+   CELULAR
+   ============================== */
+
+@media (max-width: 900px) {
+
+    .inicio {
+        min-height: 100vh;
+        padding: 50px 20px 80px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .polaroid {
+        position: relative;
+        display: block;
+        width: 145px;
+        padding: 8px 8px 15px;
+        margin: 10px auto;
+    }
+
+    .polaroid img {
+        width: 129px;
+        height: 155px;
+        object-fit: cover;
+    }
+
+    .polaroid p {
+        font-size: 11px;
+        margin-top: 7px;
+    }
+
+    .izquierda {
+        left: auto;
+        top: auto;
+        order: 1;
+        transform: rotate(-6deg);
+    }
+
+    .portada {
+        order: 2;
+        padding: 10px;
+    }
+
+    .derecha {
+        right: auto;
+        top: auto;
+        order: 3;
+        transform: rotate(6deg);
+    }
+
+    .portada h1 {
+        font-size: 58px;
+    }
+
+    .portada h2 {
+        font-size: 32px;
+    }
+
+    .mini-titulo {
+        font-size: 11px;
+    }
+
+    .subtitulo {
+        font-size: 15px;
+    }
+
+    .recuerdos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carta-contenedor {
+        padding: 35px 25px;
+    }
+
+    .titulo-seccion {
+        font-size: 30px;
+    }
+}
+
+
+/* ==============================
+   CELULARES CHICOS
+   ============================== */
+
 @media (max-width: 500px) {
+
+    .inicio {
+        padding: 35px 15px 70px;
+    }
 
     .polaroid {
         width: 125px;
         padding: 7px 7px 12px;
-        margin: 12px auto;
+        margin: 8px auto;
     }
 
     .polaroid img {
@@ -95,4 +577,43 @@ CELULARES PEQUEÑOS
         height: 135px;
     }
 
+    .polaroid p {
+        font-size: 10px;
+    }
+
+    .portada h1 {
+        font-size: 48px;
+    }
+
+    .portada h2 {
+        font-size: 27px;
+    }
+
+    .mini-titulo {
+        font-size: 9px;
+    }
+
+    .subtitulo {
+        font-size: 13px;
+    }
+
+    .titulo-seccion {
+        font-size: 27px;
+    }
+
+    .carta {
+        padding: 35px 25px;
+    }
+
+    .carta p {
+        font-size: 15px;
+    }
+
+    .final h2 {
+        font-size: 32px;
+    }
+
+    .final p {
+        font-size: 15px;
+    }
 }
