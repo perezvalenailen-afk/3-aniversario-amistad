@@ -617,3 +617,13 @@ footer {
         font-size: 15px;
     }
 }
+/* ==============================
+   EVITAR FOTOS EN BLANCO Y NEGRO
+   ============================== */
+
+.polaroid img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+}
